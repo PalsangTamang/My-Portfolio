@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Palsang's Cafe | Luxury Coffee Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="cafe.css">
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-container">
+    <div class="loader-ring"></div>
+    <div class="loader-text">
+      <span>P</span><span>A</span><span>L</span><span>S</span><span>A</span><span>N</span><span>G</span><span>'</span><span>S</span>
+    </div>
+    <div class="loader-sub">Crafting Excellence...</div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div id="progress"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-mug-hot"></i></div>
+      <div class="logo-text">
+        <span class="logo-main">PALSANG'S</span>
+        <span class="logo-sub">CAFE</span>
+      </div>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#reservation" class="nav-link">Reserve</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+    </div>
+    
+    <div class="nav-actions">
+      <button class="nav-action-btn" id="cartBtn" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span id="cartCount" class="cart-badge">0</span>
+      </button>
+      <button class="nav-action-btn" id="langBtn">
+        <i class="fas fa-globe"></i>
+      </button>
+      <button class="nav-action-btn" id="darkModeBtn">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+    
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <video autoplay muted loop>
+      <source src="1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-badge">Est. 2026</div>
+    <h1 class="hero-title">
+      <span class="title-line">Welcome to</span>
+      <span class="title-main">Palsang's Cafe</span>
+    </h1>
+    <div class="hero-divider">
+      <span></span>
+      <i class="fas fa-coffee"></i>
+      <span></span>
+    </div>
+    <p class="hero-desc">Experience the finest coffee crafted with passion, served with love in the heart of Kathmandu.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="scrollToMenu()">
+        Explore Menu <i class="fas fa-arrow-right"></i>
+      </button>
+      <button class="btn-outline" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">
+        Reserve Table <i class="fas fa-calendar-alt"></i>
+      </button>
+    </div>
+  </div>
+  
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- COUNTER SECTION -->
+<section class="counters-section">
+  <div class="container">
+    <div class="counters-grid">
+      <div class="counter-card" data-aos="fade-up">
+        <div class="counter-icon">
+          <i class="fas fa-mug-hot"></i>
+        </div>
+        <div class="counter-number">
+          <span class="counter" data-target="15280">0</span>
+        </div>
+        <div class="counter-label">Cups of Coffee</div>
+      </div>
+      
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="counter-icon">
+          <i class="fas fa-smile"></i>
+        </div>
+        <div class="counter-number">
+          <span class="counter" data-target="8750">0</span>
+        </div>
+        <div class="counter-label">Happy Customers</div>
+      </div>
+      
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="counter-icon">
+          <i class="fas fa-award"></i>
+        </div>
+        <div class="counter-number">
+          <span class="counter" data-target="15">0</span>
+        </div>
+        <div class="counter-label">Awards Won</div>
+      </div>
+      
+      <div class="counter-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="counter-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="counter-number">
+          <span class="counter" data-target="8">0</span>
+        </div>
+        <div class="counter-label">Years of Excellence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU SECTION -->
+<section id="menu" class="menu-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">OUR OFFERINGS</span>
+      <h2 class="section-title">Discover Our <span class="highlight">Menu</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="coffee">Coffee</button>
+      <button class="filter-tab" data-filter="tea">Tea</button>
+      <button class="filter-tab" data-filter="dessert">Dessert</button>
+      <button class="filter-tab" data-filter="khaja">Khaja</button>
+      <button class="filter-tab" data-filter="khana">Khana</button>
+      <button class="filter-tab" data-filter="soft">Soft Drinks</button>
+      <button class="filter-tab" data-filter="hard">Hard Drinks</button>
+      <button class="filter-tab" data-filter="beer">Beer</button>
+    </div>
+    
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- RESERVATION SECTION -->
+<section id="reservation" class="reservation-section">
+  <div class="container">
+    <div class="reservation-wrapper">
+      <div class="reservation-content">
+        <div class="section-header left">
+          <span class="section-tag">BOOK YOUR TABLE</span>
+          <h2 class="section-title">Reserve Your <span class="highlight">Experience</span></h2>
+          <div class="section-divider left"></div>
+          <p class="section-desc">Join us for an unforgettable dining experience. Book your table in advance to secure the best spot.</p>
+        </div>
+        
+        <div class="reservation-info">
+          <div class="info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Call Us</h4>
+              <p>+977 9812345678</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email Us</h4>
+              <p>tpalsang2001@gmail.com</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Visit Us</h4>
+              <p>Kathmandu, Nepal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reservation-form-wrapper">
+        <form id="reserveForm" class="reservation-form">
+          <h3>Book a Table</h3>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="date" required>
+              <i class="fas fa-calendar"></i>
+            </div>
+            <div class="form-group">
+              <input type="time" required>
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <select required>
+              <option value="">Number of Guests</option>
+              <option>1 Person</option>
+              <option>2 People</option>
+              <option>3-4 People</option>
+              <option>5-6 People</option>
+              <option>7+ People</option>
+            </select>
+            <i class="fas fa-users"></i>
+          </div>
+          <button type="submit" class="btn-submit">Reserve Now <i class="fas fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">TESTIMONIALS</span>
+      <h2 class="section-title">What Our <span class="highlight">Guests Say</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="testimonials-slider" id="testimonialsSlider">
+      <div class="testimonial-track" id="testimonialTrack"></div>
+      <button class="slider-nav prev" id="prevTestimonial">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-nav next" id="nextTestimonial">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <div class="testimonial-dots" id="testimonialDots"></div>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">MEMORIES</span>
+      <h2 class="section-title">Our <span class="highlight">Gallery</span></h2>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item" data-aos="zoom-in">
+      <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80" alt="Cafe Interior">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=800&q=80" alt="Coffee Art">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Cafe Corner">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Coffee Beans">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Pastries">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Dining Area">
+      <div class="gallery-overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total Amount</span>
+      <span>Rs. <span id="cartTotal">0</span></span>
+    </div>
+    <button class="cart-clear" onclick="clearCart()">
+      <i class="fas fa-trash-alt"></i> Clear Cart
+    </button>
+    <button class="cart-checkout" onclick="payWithEsewa()">
+      <i class="fas fa-wallet"></i> Pay with eSewa
+    </button>
+  </div>
+</div>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/9779812345678" class="whatsapp-btn" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+  <span>Order on WhatsApp</span>
+</a>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" id="lightboxImg" src="">
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <i class="fas fa-mug-hot"></i>
+          <span>Palsang's Cafe</span>
+        </div>
+        <p>Experience the finest coffee crafted with passion, served with love in the heart of Kathmandu.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-tripadvisor"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <ul>
+          <li><span>Monday - Friday:</span> <span>8:00 - 22:00</span></li>
+          <li><span>Saturday - Sunday:</span> <span>9:00 - 23:00</span></li>
+          <li><span>Holidays:</span> <span>10:00 - 20:00</span></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+          <li><i class="fas fa-phone-alt"></i> +977 9813716354</li>
+          <li><i class="fas fa-envelope"></i> tpalsang2001@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Palsang's Cafe. All Rights Reserved. Crafted with <i class="fas fa-heart"></i> in Nepal</p>
+    </div>
+  </div>
+</footer>
+
+<script src="cafe.js"></script>
+</body>
+</html>

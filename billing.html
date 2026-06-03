@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PALSANG'S CAFE |Billing System</title>
+  <link rel="stylesheet" href="billing.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+<div class="bg-orb orb4"></div>
+
+<div class="main-container">
+  <!-- LEFT: Enhanced Billing Form -->
+  <div class="form-section glass-card">
+    <div class="brand-header">
+      <div class="brand-icon">
+        <i class="fas fa-mug-hot"></i>
+      </div>
+      <div>
+        <h1>PALSANG'S CAFE</h1>
+        <p class="brand-tag">Premium Billing System</p>
+      </div>
+    </div>
+
+    <!-- Quick Menu Items -->
+    <div class="quick-menu">
+      <h3><i class="fas fa-bolt"></i> Quick Menu</h3>
+      <div class="quick-buttons" id="quickButtons">
+        <button class="quick-btn" data-name="Milk Coffee" data-price="80">☕ Coffee</button>
+        <button class="quick-btn" data-name="Black Tea" data-price="50">🍵 Tea</button>
+        <button class="quick-btn" data-name="Momo" data-price="280">🥟 Momo</button>
+        <button class="quick-btn" data-name="Chowmein" data-price="140">🍜 Chowmein</button>
+        <button class="quick-btn" data-name="Chicken Khana" data-price="250">🍛 Thakali</button>
+        <button class="quick-btn" data-name="Chocolate Cake" data-price="230">🍰 Cake</button>
+      </div>
+    </div>
+
+    <div class="customer-section">
+      <h3><i class="fas fa-user-circle"></i> Customer Details</h3>
+      <div class="input-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" id="customerName" placeholder="Customer Name" autocomplete="off">
+      </div>
+      <div class="input-group">
+        <i class="fas fa-phone-alt input-icon"></i>
+        <input type="text" id="customerPhone" placeholder="Phone Number" autocomplete="off">
+      </div>
+      <div class="input-group">
+        <i class="fas fa-map-marker-alt input-icon"></i>
+        <input type="text" id="customerAddress" placeholder="Address (Optional)">
+      </div>
+    </div>
+
+    <div class="item-section">
+      <h3><i class="fas fa-cart-plus"></i> Add Item</h3>
+      <div class="input-group">
+        <i class="fas fa-tag input-icon"></i>
+        <input type="text" id="itemName" placeholder="Item name" list="menuSuggestions" autocomplete="off">
+        <datalist id="menuSuggestions">
+          <option>Milk Coffee</option>
+          <option>Black Tea</option>
+          <option>Momo</option>
+          <option>Chowmein</option>
+          <option>Chicken Khana</option>
+          <option>Buff Khana</option>
+          <option>Chocolate Cake</option>
+          <option>Sprite</option>
+          <option>Coke</option>
+          <option>Tuborg</option>
+        </datalist>
+      </div>
+      <div class="row-2cols">
+        <div class="input-group">
+          <i class="fas fa-dollar-sign input-icon"></i>
+          <input type="number" id="itemPrice" placeholder="Price" step="any">
+        </div>
+        <div class="input-group">
+          <i class="fas fa-calculator input-icon"></i>
+          <input type="number" id="itemQty" placeholder="Qty" value="1" min="1">
+        </div>
+      </div>
+      <button class="btn-primary" onclick="addItemEnhanced()">
+        <i class="fas fa-plus-circle"></i> Add to Bill
+      </button>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-secondary" onclick="quickClearItems()">
+        <i class="fas fa-eraser"></i> Clear Items
+      </button>
+      <button class="btn-secondary reset-btn" onclick="resetWholeBill()">
+        <i class="fas fa-trash-alt"></i> Reset Bill
+      </button>
+    </div>
+  </div>
+
+  <!-- RIGHT: Premium Invoice -->
+  <div class="invoice-section glass-card">
+    <div class="invoice-header-top">
+      <div class="invoice-logo">
+        <i class="fas fa-mug-hot"></i>
+        <div>
+          <h2>TAX INVOICE</h2>
+          <p>Palsang's Cafe</p>
+        </div>
+      </div>
+      <div class="invoice-badge">
+        <span><i class="fas fa-hashtag"></i> <span id="billNo">HAL100001</span></span>
+      </div>
+    </div>
+
+    <div class="invoice-meta">
+      <div><i class="far fa-calendar-alt"></i> <span id="date"></span></div>
+      <div><i class="fas fa-clock"></i> <span id="time"></span></div>
+      <div><i class="fas fa-user-check"></i> <span id="cashier">Cashier: Admin</span></div>
+    </div>
+
+    <div class="customer-detail-card">
+      <div><i class="fas fa-user"></i> <strong>Customer:</strong> <span id="previewName">—</span></div>
+      <div><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> <span id="previewPhone">—</span></div>
+      <div><i class="fas fa-location-dot"></i> <strong>Address:</strong> <span id="previewAddress">—</span></div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="billItemsList">
+          <tr class="empty-row"><td colspan="5">✨ No items added — start billing ✨</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Discount Section -->
+    <div class="discount-section">
+      <div class="discount-input">
+        <i class="fas fa-tag"></i>
+        <input type="number" id="discountPercent" placeholder="Discount %" value="0" step="any" min="0" max="100">
+        <span>%</span>
+      </div>
+      <div class="discount-input">
+        <i class="fas fa-rupee-sign"></i>
+        <input type="number" id="discountFixed" placeholder="Discount ₹" value="0" step="any" min="0">
+      </div>
+      <button class="apply-discount" onclick="applyDiscount()"><i class="fas fa-check"></i> Apply</button>
+    </div>
+
+    <div class="totals-panel">
+      <div class="total-row">
+        <span>Subtotal:</span>
+        <span><span id="subtotalVal">0.00</span>¥</span>
+      </div>
+      <div class="total-row">
+        <span>Discount:</span>
+        <span>-<span id="discountVal">0.00</span>¥</span>
+      </div>
+      <div class="total-row">
+        <span>Tax (GST 13%):</span>
+        <span><span id="taxVal">0.00</span>¥</span>
+      </div>
+      <div class="total-row grand-total">
+        <span>GRAND TOTAL:</span>
+        <span><span id="grandTotalVal">0.00</span>¥</span>
+      </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+      <h4><i class="fas fa-wallet"></i> Payment Method</h4>
+      <div class="payment-buttons">
+        <button class="payment-btn" onclick="selectPayment('cash')">
+          <i class="fas fa-money-bill-wave"></i> Cash
+        </button>
+        <button class="payment-btn" onclick="selectPayment('card')">
+          <i class="fas fa-credit-card"></i> Card
+        </button>
+        <button class="payment-btn" onclick="selectPayment('esewa')">
+          <i class="fab fa-google-wallet"></i> eSewa
+        </button>
+      </div>
+      <div id="paymentStatus" class="payment-status"></div>
+    </div>
+
+    <div class="invoice-actions">
+      <button class="print-btn" onclick="printInvoice()">
+        <i class="fas fa-print"></i> Print
+      </button>
+      <button class="print-btn" onclick="downloadPDF()">
+        <i class="fas fa-file-pdf"></i> PDF
+      </button>
+      <button class="print-btn" onclick="newBill()">
+        <i class="fas fa-plus-circle"></i> New Bill
+      </button>
+    </div>
+
+    <div class="invoice-footer">
+      <i class="fas fa-check-circle"></i> CAFE Certified | Thank you for visiting!
+    </div>
+  </div>
+</div>
+
+<script src="billing.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Tamang Palsang | Portfolio</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- RAIN VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline id="rainVideo">
+    <source src="https://cdn.pixabay.com/video/2023/10/10/184094-873226699_large.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+<div id="lightning"></div>
+<div id="particles"></div>
+
+<!-- NAVBAR -->
+<header>
+    <nav>
+        <div class="logo">TAMANG<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#about" id="navAbout">About</a></li>
+            <li><a href="#skills" id="navSkills">Skills</a></li>
+            <li><a href="#projects" id="navProjects">Projects</a></li>
+            <li><a href="#journey" id="navJourney">Journey</a></li>
+            <li><a href="#contact" id="navContact">Contact</a></li>
+        </ul>
+        <div class="language-buttons">
+            <button onclick="changeLanguage('en')">EN</button>
+            <button onclick="changeLanguage('jp')">日本語</button>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <p class="intro-text">Welcome To My Portfolio 👋</p>
+        <h1 id="heroTitle">Hello, I'm <span>Tamang Palsang</span></h1>
+        <h2 id="heroSubtitle">Entry-Level IT Developer</h2>
+        <p id="heroDesc">I create responsive websites and continuously improve my skills in web development, Java, and modern programming technologies.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn primary-btn" id="heroBtn">View Projects</a>
+            <a href="#contact" class="btn secondary-btn">Contact Me</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://github.com/palsangtamang" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:tpalsang2001@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="image-box">
+            <img src="2.png" alt="Tamang Palsang">
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title" id="aboutTitle">About Me</h2>
+    <div class="about-card">
+        <p id="aboutText">I am an entry-level IT developer based in Japan with a strong interest in web development and software engineering.</p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="section-title" id="skillsTitle">My Skills</h2>
+    <div class="skills-container">
+        <div class="skill-card">
+            <h3>HTML</h3>
+            <div class="progress-bar"><span style="width:90%"></span></div>
+            <p>90%</p>
+        </div>
+        <div class="skill-card">
+            <h3>CSS</h3>
+            <div class="progress-bar"><span style="width:85%"></span></div>
+            <p>85%</p>
+        </div>
+        <div class="skill-card">
+            <h3>JavaScript</h3>
+            <div class="progress-bar"><span style="width:55%"></span></div>
+            <p>55%</p>
+        </div>
+        <div class="skill-card">
+            <h3>Java</h3>
+            <div class="progress-bar"><span style="width:65%"></span></div>
+            <p>65%</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title" id="projectTitle">Featured Projects</h2>
+    <div class="projects-container">
+        <div class="project-card">
+            <h3 id="project1Title">Cafe Website</h3>
+            <p id="project1Desc">Responsive cafe website with menu and payment system.</p>
+            <a href="cafe.html" class="project-btn">View Project</a>
+        </div>
+        <div class="project-card">
+            <h3 id="project2Title">Billing Website</h3>
+            <p id="project2Desc">Billing system with total calculation and dashboard.</p>
+            <a href="billing.html" class="project-btn">View Project</a>
+        </div>
+        <div class="project-card">
+            <h3 id="project3Title">Java Calculator</h3>
+            <p id="project3Desc">Calculator built using Java programming language.</p>
+            <a href="calculator.html" class="project-btn">View Project</a>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+    <h2 class="section-title" id="journeyTitle">My Learning Journey</h2>
+    <div class="timeline">
+        <div class="timeline-card">
+            <h3>Started Programming</h3>
+            <p>Started learning web development and Java.</p>
+        </div>
+        <div class="timeline-card">
+            <h3>Built Projects</h3>
+            <p>Created multiple responsive web applications.</p>
+        </div>
+        <div class="timeline-card">
+            <h3>Future Goal</h3>
+            <p>Become a professional IT developer in Japan.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title" id="contactTitle">Contact Me</h2>
+    <div class="contact-box">
+        <p id="emailText">📧 Email: tpalsang2001@gmail.com</p>
+        <p id="githubText">💻 GitHub: <a href="https://palsangtamang.github.io/My-Portfolio/" target="_blank">palsangtamang.github.io/my-portfolio/</a></p>
+        <p id="phoneText">📞 Phone: 080-6994-7485</p>
+        <p id="locationText">📍 Chiba, Japan</p>
+    </div>
+</section>
+
+<footer id="footerText">
+    © 2026 Palsang Tamang | All Rights Reserved
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
